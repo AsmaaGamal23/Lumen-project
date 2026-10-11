@@ -1,0 +1,986 @@
+/* Universal Reset & Color Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --accent-color: #c88a58; /* العسلي الخشبي الدافئ للتفاعل */
+    --dark-color: #1c2a29;   /* الكحلي/الزيتي الغامق المميز */
+    --gray-bg: #fbf9f6;      /* خلفية رمادي/بيج ناعمة جداً */
+    --text-muted: #555555;
+    --border-color: #e5e5e5;
+}
+
+body {
+    background-color: #ffffff;
+    color: var(--dark-color);
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Container ممتد بعرض 96% لملء الشاشة بدون مسافات فارغة على الجوانب */
+.container {
+    width: 96%;
+    max-width: 1650px;
+    margin: 0 auto;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-align {
+    display: flex;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* 1. Top Bar */
+.top-bar {
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 0;
+    font-size: 50px;
+    color: var(--text-muted);
+}
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100% !important;
+    padding-left: 130px;
+    padding-right: 130px;
+}
+
+.top-links a, .top-right a {
+    margin-right: 70px;
+    font-weight: 500;
+}
+
+.top-links a:hover, .top-right a:hover {
+    color: var(--accent-color);
+}
+
+.social-icons {
+    display: inline-flex;
+    gap: 75px;
+    margin-left: 20px;
+    font-size: 40px;
+}
+.social-icons a{
+    padding: 0 2px !important;
+    margin: 0 !important;
+    width: auto !important;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+}
+
+/* 2. Main Header Sticky */
+.main-header {
+    padding: 24px 0;
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.logo h2 {
+    font-size: 60px;
+    font-weight: 800;
+    color: var(--dark-color);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    right: 1250px;
+}
+
+.logo-icon {
+    color: var(--accent-color);
+    font-size: 80px;
+}
+
+/* القائمة الرئيسية وتأثير الخطين الرأسيين ( Word ) */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    font-weight: 700;
+    font-size: 40px;
+    color: #222222;
+    padding: 6px 14px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 2px;
+    height: 25px;
+    background-color: var(--accent-color);
+    transition: transform 0.25s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 2px;
+    height: 20px;
+    background-color: var(--accent-color);
+    transition: transform 0.25s ease;
+}
+
+.nav-links a:hover::before,
+.nav-links a:hover::after,
+.nav-links a.active::before,
+.nav-links a.active::after {
+    transform: translateY(-50%) scaleY(1);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent-color);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    min-width: 230px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    padding: 10px 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 12px 25px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.dropdown-menu li a::before,
+.dropdown-menu li a::after {
+    display: none;
+}
+
+.dropdown-menu li a:hover {
+    background: #fdfbf7;
+    color: var(--accent-color);
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    gap: 70px;
+    font-size: 50px;
+    margin-left: 790px;
+}
+
+.header-actions a:hover {
+    color: var(--accent-color);
+}
+
+.cart-btn {
+    position: relative;
+}
+.cart-btn .badge {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background: var(--accent-color);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3. Announcement Bar */
+.announcement-bar {
+    background: #000000;
+    color: #cccccc;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.announcement-bar a {
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 5px solid #ffffff;
+    padding-bottom: 5px;
+    margin-left: 8px;
+    font-weight: 600;
+}
+
+.announcement-bar a:hover {
+    color: var(--accent-color);
+}
+
+/* 4. Hero Section */
+.hero-section {
+    background: var(--gray-bg);
+    padding: 80px 0;
+    width: 100%;
+}
+
+.flex-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1.1;
+}
+
+.hero-content .subtitle {
+    color: var(--accent-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-style: italic;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    font-weight: 700;
+    margin: 10px 0 20px;
+    line-height: 1.2;
+    color: var(--dark-color);
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    max-width: 550px;
+    margin-bottom: 35px;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 16px 42px;
+    background: #000000;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+}
+
+.hero-image {
+    flex: 1 !important;
+    height: 520px !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    overflow:  !important;
+}
+
+.hero-image img {
+    border-radius: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+/* 5. Category Banners */
+.categories-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 70px auto;
+}
+
+.category-card {
+    position: relative;
+    height: 360px;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.category-card img {
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.06);
+}
+
+.category-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    color: #ffffff;
+}
+
+.category-overlay h3 {
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+.shop-now-btn {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #ffffff;
+    padding: 10px 24px;
+    font-size: 15px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.shop-now-btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* 6. Trending Products & Action Overlay Animation */
+.products-section {
+    margin: 90px auto;
+}
+
+.section-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.category-tabs .tab {
+    margin-left: 25px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.category-tabs .tab.active, .category-tabs .tab:hover {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 4px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.product-img-box {
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+    background: #f8f8f8;
+}
+
+/* شريط الأيقونات الذي ينزلق فوق الصورة عند الـ Hover (مطابق للفيديو) */
+.product-actions {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.18);
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-actions {
+    opacity: 1;
+    visibility: visible;
+    bottom: 22px;
+}
+
+.btn-action {
+    border: none;
+    background: transparent;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333333;
+    transition: all 0.2s ease;
+}
+.btn-action:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+}
+
+.product-info {
+    padding: 18px 0;
+    text-align: center;
+}
+
+.product-info h4 a {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.product-info h4 a:hover {
+    color: var(--accent-color);
+}
+
+.product-info .price {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: 6px;
+}
+
+.product-info .old-price {
+    text-decoration: line-through;
+    color: #aaaaaa;
+    font-size: 15px;
+    margin-left: 8px;
+    font-weight: 400;
+}
+
+/* 7. Testimonial Section */
+.testimonial-section {
+    background: #edf7f6;
+    padding: 90px 0;
+    margin: 70px 0;
+}
+
+.testimonial-section h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.quote {
+    max-width: 800px;
+    margin: 25px auto;
+    font-size: 20px;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.user-info img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin: 20px auto 10px;
+}
+
+.user-info h4 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.user-info span {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* 8. Latest News Grid */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.news-card {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.news-card img {
+    height: 250px;
+}
+
+.news-content {
+    padding: 28px;
+}
+
+.category-tag {
+    color: #888888;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.news-content h4 {
+    font-size: 20px;
+    margin: 12px 0;
+}
+
+.news-content h4 a:hover {
+    color: var(--accent-color);
+}
+
+.news-content p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.read-more {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+.read-more:hover {
+    color: var(--accent-color);
+}
+
+/* 9. Features Bar */
+.features-bar {
+    background: #fcfcfc;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 45px 0;
+    margin-top: 90px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.feature-item i {
+    font-size: 40px;
+    color: var(--dark-color);
+}
+
+.feature-item h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.feature-item p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* 10. Newsletter Bar */
+.newsletter-bar {
+    background: #000000;
+    color: #ffffff;
+    padding: 45px 0;
+}
+
+.newsletter-text h3 {
+    font-size: 26px;
+}
+
+.newsletter-text p {
+    font-size: 15px;
+    color: #aaaaaa;
+}
+
+.newsletter-form {
+    display: flex;
+}
+
+.newsletter-form input {
+    padding: 14px 22px;
+    width: 350px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.newsletter-form button {
+    padding: 14px 32px;
+    background: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 18px;
+    font-size: 20px;
+}
+
+.footer-socials a:hover {
+    color: var(--accent-color);
+}
+
+/* 11. Main Footer */
+.main-footer {
+    background: #171717;
+    color: #aaaaaa;
+    padding: 70px 0 25px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 35px;
+    margin-bottom: 50px;
+}
+
+.footer-logo {
+    color: #ffffff;
+    font-size: 32px;
+}
+
+.footer-logo span {
+    color: var(--accent-color);
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+}
+
+.copyright {
+    border-top: 1px solid #2b2b2b;
+    padding-top: 25px;
+    font-size: 15px;
+}
+
+/* Responsive Scaling */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 992px) {
+    .products-grid, .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .categories-section, .news-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .flex-hero, .flex-between {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+    .products-grid, .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-content h1 {
+        font-size: 40px;
+    }
+    .newsletter-form input {
+        width: 100%;
+    }
+}
+/* 1. ضبط جميع الروابط داخل الـ top-bar لتكون جاهزة للحركة */
+.top-bar a {
+    position: relative;
+    display: inline-block;
+    padding: 4px 25px;           /* مسافة ناعمة حول النص والأيقونة */
+    color: #333333;             /* اللون الأساسي */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* 2. إنشاء الخطين الجانبيين (يمين وشمال) وإخفائهما في البداية */
+.top-bar a::before,
+.top-bar a::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    width: 7px;                 /* سُمك الخطين */
+    background-color: #ff0000;  /* لون الخطين (أحمر) */
+    transform: scaleY(0);       /* مخفيين رأسياً */
+    transition: transform 0.80s ease;
+}
+
+/* الخط الأيسر ينزل من الأعلى */
+.top-bar a::before {
+    left: 0;
+    transform-origin: top;
+}
+
+/* الخط الأيمن يصعد من الأسفل */
+.top-bar a::after {
+    right: 0;
+    transform-origin: bottom;
+}
+
+/* 3. إظهار الخطين وتغيير لون النص/الأيقونة للأحمر عند تمرير الماوس (Hover) */
+.top-bar a:hover::before,
+.top-bar a:hover::after {
+    transform: scaleY(1);       /* إظهار الخطين بطول العنصر */
+}
+
+.top-bar a:hover {
+    color: #ff0000;              /* يتحول اللون إلى الأحمر */
+}
+/* 1. إعداد رابط القائمة وإلغاء أي خلفيات أو إطارات قديمة */
+.nav-links a {
+    position: relative;
+    display: inline-block;
+    padding: 2px 20px 20px 20px;
+    color: #333;
+    text-decoration: none;
+    background-color: transparent !important; /* ضمان عدم وجود لون خلفية يغطي الكلمة */
+    transition: color 0.3s ease;
+}
+
+/* 2. رسم الضلعين الأوّلين (العلوي والأيسر) كخطوط رفيعة 2px */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 0;
+    height: 0;
+    background-color: transparent !important;
+    box-sizing: border-box;
+    border-top: 8px solid var(--accent-color);  /* الخط العلوي */
+    border-left: 8px solid var(--accent-color); /* الخط الأيسر */
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* 3. رسم الضلعين الآخرين (السفلي والأيمن) كخطوط رفيعة 2px */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    background-color: transparent !important;
+    box-sizing: border-box;
+    border-bottom: 8px solid var(--accent-color); /* الخط السفلي */
+    border-right: 8px solid var(--accent-color);  /* الخط الأيمن */
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* 4. عند وقوف الماوس (Hover): تتمدد الخطوط لتكمل رسم المستطيل المفرغ حول الكلمة */
+.nav-links a:hover::before {
+    width: 100%;
+    height: calc(100% - 30px);
+}
+ .nav-links a:hover::after {
+    width: 100%;
+    height: 100%;
+}
+ 
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+/* الحل النهائي المضمون 100% للزاوية الشمال */
+.nav-links a:hover::before {
+    width: 100% !important;
+    height: calc(100% - 30px) !important;
+}
+
+.nav-links a:hover::after {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important; /* بنزحزحه سكة بسيطة جداً للشمال عشان يداري أي ملي مفتوح */
+    right: auto;
+}
+/* 1. الحاوية الأساسية: ترجع طبيعي من الشمال */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important; /* بتخلي كل العناصر تبدأ من الشمال مكبرها الطبيعي */
+    text-align: left !important;
+}
+
+/* 1. الحاوية الأساسية */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important; 
+    text-align: left !important;
+}
+
+/* 1. الحاوية الأساسية: ترجع طبيعي من الشمال */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important; /* بتخلي كل العناصر تبدأ من الشمال مكبرها الطبيعي */
+    text-align: left !important;
+}
+
+/* 1. كلمة Furniture Sale الصغيرة (تكون في النص) */
+.hero-content .subtitle {
+    position: relative;
+    text-align: center !important;
+    display: block;
+    width: 100%;
+    font-size: 60px;
+   transform: translateX(-55px) !important;
+   top: -30px !important;
+
+}
+
+/* 2. إرجاع الباراجراف لطبيعته، وجعل السطر أو الكلمة الأخيرة فقط في النص */
+.hero-content p {
+    text-align: left !important;         /* الباراجراف يبدأ من مكانه الطبيعي عادي */
+    text-align-last: left !important;    /* السطر الأخير أو الكلمة الأخيرة بس في النص */
+    margin-bottom: 25px;
+    max-width: 500px;
+    width: 100%;
+    font-size: 50px;
+    line-height: 1.6;
+}
+.hero-content h1 {
+    position: relative;
+    font-size: 70px !important; /* حجم كبير وواضح للعنوان */
+    font-weight: bold !important;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    text-align: left !important;
+    top: -15px;
+}
+
+/* 3. زرار SHOP NOW (يكون في النص) */
+.hero-content .btn-primary {
+    position: relative;
+    display: block;
+    margin: 10px  auto !important;           /* بيخلي الزرار يجي في النص بالظبط */
+    text-align: center;
+    font-size: 35px;
+    width: fit-content;
+    transform: translateX(-55px) !important;
+    padding: 30px 45px !important;
+    top: 10px;
+
+}
+
+/* 4. الحاوية الأساسية عشان تظبط محاذاة العناصر وتجيب الزرار والكلمة فوق في النص */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;      /* بتخلي الزرار وكلمة Furniture Sale في النص */
+    text-align: left;                    /* عشان الباراجراف ما يتأثرش ويفضل مظبوط */
+}
+.hero-content p {
+    font-size: 16px !important;
+    line-height: 1.6;
+    text-align: left !important;         /* 👈 دي اللي بتجبر السطور الأولى تبدأ من أول الشمال تحت Minimal مباشرة */
+    text-align-last: center !important;    /* 👈 دي اللي بتخلي السطر الأخير بس هو اللي في النص */
+    margin-bottom: 25px !important;
+    max-width: 500px !important;         /* عرض مناسب يخلي الكلام يتقسم لسطرين فوق والسطر الأخير تحت */
+    width: 100% !important;
+}
+/* الباراجراف كبير وواضح وبياخد راحته */
+.hero-content p {
+    font-size: 32px !important;          /* 👈 كبرنا حجم الخط هنا (تقدري تخليها 35px أو 40px لو حابة أكبر) */
+    line-height: 1.5 !important;         /* المسافة بين الأسطر مريحة للعين */
+    text-align: left !important;         /* محاذاة طبيعية للشمال */
+    text-align-last: center !important;    /* السطر الأخير طبيعي من الشمال */
+    margin-bottom: 30px !important;      /* مسافة تحته عشان يظبط مع الزرار */
+    max-width: 700px !important;         /* 👈 كبرنا عرض الحاوية عشان الخط الكبير يفرش براحته */
+    width: 100% !important;
+}
+/* تحريك الصورة فقط جهة اليمين */
+/* .hero-image { */
+    position: relative !important;
+    left: 300px !important;  /* 👈 زودي أو قللي الرقم ده (مثلاً 50px أو 100px) لحد ما تظبط في المكان اللي يعجبك على اليمين */
+}
+/* التحكم في عرض وطول الصورة براحتك */
+.hero-image img {
+    width: 3000px !important;  /* 👈 العرض (زودي الرقم ده لو عاوزه تعرضيها أكتر) */
+    height: 835px !important; /* 👈 الطول (زودي الرقم ده لو عاوزه تطوليها أكتر) */
+    object-fit: cover !important;
+}
